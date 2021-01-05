@@ -22,12 +22,12 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Publish
       run: dotnet publish --configuration Release
-    - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
+    ‐ uses: docker/build-push-action@v1
+      name: build-push
       with:
-        image: kamya24/kam1
+        username: ${{ DOCKER_USERNAME }}
+        password: ${{ DOCKER_PASSWORD }}
         registry: docker.io
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: kamya24/kam1
         tags: v1
+   
