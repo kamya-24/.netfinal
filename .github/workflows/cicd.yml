@@ -23,9 +23,9 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release
     - name: Build & push Docker image
-      uses: docker/build-push-action@v2
+      uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        repository: kamya24/kam
+        image: kamya24/kam
         registry: docker.io
         dockerfile: dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
