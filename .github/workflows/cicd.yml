@@ -1,6 +1,6 @@
 on:
-  push:
-    branches: [ master ]
+  schedule:
+    - cron: '39 5 * * *'
     
 jobs:
   docker:
@@ -8,11 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: tag
-        run: echo ::set-output name=TAG::${GITHUB_REF#refs/*/}
-
-      - name: push change
-        env:
-          TEST: ${{ secrets.Test }}
-        run: |
-          printenv
+        run: echo hi
 
